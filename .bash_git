@@ -12,18 +12,13 @@ __has_parent_dir () {
     return 1;
 }
 
-GitRed="\[\033[0;91m\]"
-GitBlue="\[\033[0;34m\]"
-GitGreen="\[\033[0;92m\]"
-
-
 __vcs_name() {
     if __has_parent_dir ".git"; then
         $(echo `git status` | grep "nothing to commit" > /dev/null 2>&1;)
         if [ "$?" -eq "0" ]; then
-            echo -e "-\033[0;34m[$(__git_ps1 'git \033[0;92m%s\033[0;34m')]";
+            echo -e "-\e[1m\e[90m[\033[0;34m$(__git_ps1 'git \033[0;92m%s\033[0;34m')\e[1m\e[90m]";
         else
-            echo -e "-\033[0;34m[$(__git_ps1 'git \033[0;91m%s\033[0;34m')]";
+            echo -e "-\e[1m\e[90m[\033[0;34m$(__git_ps1 'git \033[0;91m%s\033[0;34m')\e[1m\e[90m]";
         fi
     fi
 }

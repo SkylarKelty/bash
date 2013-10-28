@@ -8,3 +8,5 @@ alias rm='rm'
 alias mv='mv -iv'
 alias grep='grep --color=auto -in'
 alias ..='cd ..'
+alias h='history'
+alias j="jobs -l"

@@ -1,0 +1,33 @@
+__has_parent_dir () {
+    test -d "$1" && return 0;
+
+    current="."
+    while [ ! "$current" -ef "$current/.." ]; do
+        if [ -d "$current/$1" ]; then
+            return 0;
+        fi
+        current="$current/..";
+    done
+
+    return 1;
+}
+
+__vcs_name() {
+    if __has_parent_dir ".git"; then
+        echo -e "\e[1m\e[90m[\e[34m$(__git_ps1 'git %s')\e[1m\e[90m]";
+    fi
+}
+
+black=$(tput -Txterm setaf 0)
+red=$(tput -Txterm setaf 1)
+green=$(tput -Txterm setaf 2)
+yellow=$(tput -Txterm setaf 3)
+dk_blue=$(tput -Txterm setaf 4)
+pink=$(tput -Txterm setaf 5)
+lt_blue=$(tput -Txterm setaf 6)
+
+bold=$(tput -Txterm bold)
+reset=$(tput -Txterm sgr0)
+
+# Fancy prompt
+export PS1='\n\[$bold\]\[$black\][\[$green\]\u\[$yellow\]@\[$green\]\h\[$black\]]\[$reset\]-$(__vcs_name)\n\[$reset\]\w\[$reset\]\$ '

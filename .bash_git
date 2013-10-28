@@ -14,7 +14,7 @@ __has_parent_dir () {
 
 __vcs_name() {
     if __has_parent_dir ".git"; then
-        echo -e "\e[1m\e[90m[\e[34m$(__git_ps1 'git %s')\e[1m\e[90m]";
+        echo -e "-\e[1m\e[90m[\e[34m$(__git_ps1 'git %s')\e[1m\e[90m]";
     fi
 }
 
@@ -30,4 +30,4 @@ bold=$(tput -Txterm bold)
 reset=$(tput -Txterm sgr0)
 
 # Fancy prompt
-export PS1='\n\[$bold\]\[$black\][\[$green\]\u\[$yellow\]@\[$green\]\h\[$black\]]\[$reset\]-$(__vcs_name)\n\[$reset\]\w\[$reset\]\$ '
+export PS1='\n\[$bold\]\[$black\][\[$green\]\u\[$yellow\]@\[$green\]\h\[$black\]]\[$reset\]$(__vcs_name)\n\[$reset\]\w\[$reset\]\$ '

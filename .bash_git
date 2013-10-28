@@ -21,9 +21,9 @@ __vcs_name() {
     if __has_parent_dir ".git"; then
         $(echo `git status` | grep "nothing to commit" > /dev/null 2>&1;)
         if [ "$?" -eq "0" ]; then
-            echo -e "-\033[0;34m[\[$(__git_ps1 'git (\033[0;92m%s\033[0;34m)')]";
+            echo -e "-\033[0;34m[\[$(__git_ps1 'git \033[0;92m%s\033[0;34m')]";
         else
-            echo -e "-\033[0;34m[$(__git_ps1 'git {\033[0;91m%s\033[0;34m}')]";
+            echo -e "-\033[0;34m[$(__git_ps1 'git \033[0;91m%s\033[0;34m')]";
         fi
     fi
 }

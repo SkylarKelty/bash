@@ -1,19 +1,6 @@
-__has_parent_dir () {
-    test -d "$1" && return 0;
-
-    current="."
-    while [ ! "$current" -ef "$current/.." ]; do
-        if [ -d "$current/$1" ]; then
-            return 0;
-        fi
-        current="$current/..";
-    done
-
-    return 1;
-}
-
 __vcs_name() {
-    if __has_parent_dir ".git"; then
+    $(git branch &>/dev/null;)
+    if [ $? -eq 0 ]; then
         $(echo `git status` | grep "nothing to commit" > /dev/null 2>&1;)
         if [ "$?" -eq "0" ]; then
             echo -e "-\e[1m\e[90m[\033[0;34m$(__git_ps1 'git \033[0;92m%s\033[0;34m')\e[1m\e[90m]";
@@ -24,13 +11,8 @@ __vcs_name() {
 }
 
 black=$(tput -Txterm setaf 0)
-red=$(tput -Txterm setaf 1)
 green=$(tput -Txterm setaf 2)
 yellow=$(tput -Txterm setaf 3)
-dk_blue=$(tput -Txterm setaf 4)
-pink=$(tput -Txterm setaf 5)
-lt_blue=$(tput -Txterm setaf 6)
-
 bold=$(tput -Txterm bold)
 reset=$(tput -Txterm sgr0)
 

@@ -23,4 +23,4 @@ ln -s ~/.bash_scripts/.bash_git ~/.bash_git
 ln -s ~/.bash_scripts/.bash_profile ~/.bash_profile
 ln -s ~/.bash_scripts/.bashrc ~/.bashrc
 
-. .bashrc
+. ~/.bashrc

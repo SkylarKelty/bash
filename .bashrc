@@ -100,7 +100,3 @@ fi
 if [ -f ~/.bash_functions ]; then
     . ~/.bash_functions
 fi
-
-if [ -f ~/.bash_git ]; then
-    . ~/.bash_git
-fi

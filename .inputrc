@@ -1,3 +1,14 @@
+# enable magic space
+
 $if Bash
   Space: magic-space
 $endif
+
+# do not match hidden files in bash complete without a . preceeding
+set match-hidden-files off
+
+# ignore case when auto matching
+set completion-ignore-case on
+
+# show more info when autocompleting
+set visible-stats on

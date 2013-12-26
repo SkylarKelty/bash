@@ -23,6 +23,9 @@ shopt -s checkwinsize
 # fix minor typos in directory names
 shopt -s cdspell
 
+# add some paths to cd autocomplete
+CDPATH='.:..:/:~'
+
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 

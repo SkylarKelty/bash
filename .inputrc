@@ -12,3 +12,6 @@ set completion-ignore-case on
 
 # show more info when autocompleting
 set visible-stats on
+
+# cycle through options instead of beeping
+set show-all-if-ambiguous on
